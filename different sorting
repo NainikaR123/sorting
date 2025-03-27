@@ -1,4 +1,82 @@
-#include<stdio.h>
+
+#include <stdio.h>
+
+void swap(int *a, int *b) 
+{
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+ 
+int partition(int arr[], int low, int high)
+ {
+    int pivot = arr[high];  
+    int i = (low - 1);  
+    for (int j = low; j < high; j++)
+ {
+        if (arr[j] < pivot) 
+{  
+            i++;
+            swap(&arr[i], &arr[j]);
+        }
+    }
+    swap(&arr[i + 1], &arr[high]);
+    return (i + 1);
+}
+
+ void quickSort(int arr[], int low, int high) 
+{
+    if (low < high) {
+        int pi = partition(arr, low, high);
+        
+        quickSort(arr, low, pi - 1);  
+        quickSort(arr, pi + 1, high);  
+    }
+}
+
+ 
+void printArray(int arr[], int size) 
+{
+    for (int i = 0; i < size; i++) 
+{
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+
+ int main() 
+{
+int num;
+int arr[]={9,6,11,7,2};
+int n = sizeof(arr)/sizeof(arr[0]);
+printf("Original array: \n");
+printArray(arr, n);
+printf("enter a number 1 for insertion sort\n enter a number 2 for bubble sort\n enter a number 3 for quick sort\n);
+scanf("%d",&num);
+{
+
+switch(num)
+{
+case 1: printf("You have selected a insertion sort\n");
+int insertion(arr);
+break;
+
+case 2:printf("You have selected a bubble sort\n");
+int bubblesort(arr,n);
+printf("Sorted array: \n");
+printArray(arr, n);
+break;
+
+case 3:printf("You have selected a quick sort\n);
+int quicksort(arr,0,n-1);
+printf("Sorted array: \n");
+printArray(arr, n);
+
+break;
+
+}
+}
 
 int bubblesort(int array[],int size)
 {
@@ -18,25 +96,4 @@ for (int i = 0; i < size - step - 1; ++i)
 }
 
 
-int main
-{
-int num;
-int arr[]={9,6,11,7,2};
-int size = sizeof(data)/sizeof(data[0]);
-printf("enter a number 1 for insertion sort\n enter a number 2 for bubble sort\n enter a number 3 for quick sort\n);
-scanf("%d",&num);
-switch(num)
-{
-case 1: printf("You have selected a insertion sort\n");
-int insertion(arr);
-break;
-
-case 2:printf("You have selected a bubble sort\n");
-int bubblesort(arr,size);
-break;
-
-case 3:printf("You have selected a quick sort\n);
-int quicksort(arr);
-break;
-}
-}
+ 
